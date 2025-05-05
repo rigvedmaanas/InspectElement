@@ -9,7 +9,7 @@ def Inspect():
             r = requests.get(URL)
         code = r.content.decode()
         code = BeautifulSoup(code, 'html.parser')
-        print(code)
+        code = code.prettify()
         c.code(code, language="html")
     except Exception as e:
         c.error(e)
