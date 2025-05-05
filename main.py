@@ -1,5 +1,6 @@
 import streamlit as st
 import requests
+from bs4 import BeautifulSoup
 
 code = "Enter a Url To tryout"
 def Inspect():
@@ -7,6 +8,8 @@ def Inspect():
         with st.spinner("Please Wait...."):
             r = requests.get(URL)
         code = r.content.decode()
+        code = BeautifulSoup(code, 'html.parser')
+        print(code)
         c.code(code, language="html")
     except Exception as e:
         c.error(e)
